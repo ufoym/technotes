@@ -1008,3 +1008,10 @@ footer {
     width: auto;
   }
 }
+
+header {
+    display: none;
+}
+#banner {
+    display: none;
+}
