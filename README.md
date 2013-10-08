@@ -1,6 +1,3 @@
-Ming's Tech Notes
-=================
-
 ## C++
 ### extern用途
 1. `extern` + 变量/函数声明
