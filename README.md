@@ -43,13 +43,13 @@
   static int a;         //sizeof(a) = 4
    
   class Zero {
-  int a;
-  static int b;
-  virtual void fun() {}
+       int a;
+       static int b;
+       virtual void fun() {}
   };                    //sizeof(Zero) = 8
    
   class Lin {
-  virtual void fun() {}
+       virtual void fun() {}
   };                    //sizeof(Lin) = 4
    
   class Child: public Zero {
@@ -57,3 +57,6 @@
        virtual void fun() {}
   };                    //sizeof(Child) = 12
   ```
+
+### 其它
+1. `inline`必须与函数定义放在一起才能使函数成为内联，仅将`inline`放在函数声明前面不起任何作用
