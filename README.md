@@ -38,3 +38,22 @@
 * 作用：返回一个对象或者类型所占的内存（不计算类/结构体的static成员）
 * 如果类中有虚函数，那么最终结果要多加4Byte（多出一个指向虚函数表的指针）
 * 对空类使用sizeof会返回1（占用内存为0，无法实例化，所以编译器为了使空类也能实例化，就给其分配了1Byte）
+* 例
+  ```
+  static int a;         //sizeof(a) = 4
+   
+  class Zero {
+  int a;
+  static int b;
+  virtual void fun() {}
+  };                    //sizeof(Zero) = 8
+   
+  class Lin {
+  virtual void fun() {}
+  };                    //sizeof(Lin) = 4
+   
+  class Child: public Zero {
+       int a;
+       virtual void fun() {}
+  };                    //sizeof(Child) = 12
+  ```
