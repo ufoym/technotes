@@ -28,11 +28,11 @@
         </ul>
       </header>
       <section>
-        <h1>
-<a name="c" class="anchor" href="#c"><span class="octicon octicon-link"></span></a>C++</h1>
+        <h2>
+<a name="c" class="anchor" href="#c"><span class="octicon octicon-link"></span></a>C++</h2>
 
-<h2>
-<a name="extern%E7%94%A8%E9%80%94" class="anchor" href="#extern%E7%94%A8%E9%80%94"><span class="octicon octicon-link"></span></a>extern用途</h2>
+<h3>
+<a name="extern%E7%94%A8%E9%80%94" class="anchor" href="#extern%E7%94%A8%E9%80%94"><span class="octicon octicon-link"></span></a><code>extern</code>用途</h3>
 
 <ol>
 <li>
@@ -40,6 +40,7 @@
 
 <ul>
 <li>告诉编译器该变量/函数在后面/其它cpp定义</li>
+<li>注意是声明，不要初始化</li>
 <li>
 <code>#include</code>也可达到同样目的，但<code>extern</code>可加速编译</li>
 </ul>
@@ -50,6 +51,38 @@
 <ul>
 <li>告诉链接器用C函数规范来链接，以便在C++中调用C库函数</li>
 <li>因C++支持函数重载，函数被C++编译后在符号库中的名字与C不同</li>
+</ul>
+</li>
+</ol><h3>
+<a name="static%E7%94%A8%E9%80%94" class="anchor" href="#static%E7%94%A8%E9%80%94"><span class="octicon octicon-link"></span></a><code>static</code>用途</h3>
+
+<ol>
+<li>修饰局部变量
+
+<ul>
+<li>使变量存放在静态数据区，生命周期持续到程序结束，作用域不变（仍然是局部变量）</li>
+<li>只在初次运行时进行初始化工作，且只进行一次</li>
+</ul>
+</li>
+<li>修饰全局变量/函数
+
+<ul>
+<li>使变量/函数作用域由原来的整个工程可见（用<code>extern</code>即可）变为本源文件可见</li>
+</ul>
+</li>
+<li>修饰类成员变量
+
+<ul>
+<li>使变量为所有对象共享，相当于类范围内的全局变量</li>
+<li>必须初始化（例如<code>int A::s_value = 0;</code>），且将在<code>main</code>前执行</li>
+</ul>
+</li>
+<li>修饰类成员函数
+
+<ul>
+<li>相当于类范围内的全局函数</li>
+<li>只能访问类的静态成员</li>
+<li>实现不需要<code>static</code>修饰</li>
 </ul>
 </li>
 </ol>
