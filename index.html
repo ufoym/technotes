@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Technotes by ufoym</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Technotes</h1>
+        <p>Ming's Tech Notes</p>
+
+        <p class="view"><a href="https://github.com/ufoym/technotes">View the Project on GitHub <small>ufoym/technotes</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/ufoym/technotes/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/ufoym/technotes/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/ufoym/technotes">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="mings-tech-notes" class="anchor" href="#mings-tech-notes"><span class="octicon octicon-link"></span></a>Ming's Tech Notes</h1>
+
+<h2>
+<a name="c" class="anchor" href="#c"><span class="octicon octicon-link"></span></a>C++</h2>
+
+<h3>
+<a name="extern%E7%94%A8%E9%80%94" class="anchor" href="#extern%E7%94%A8%E9%80%94"><span class="octicon octicon-link"></span></a>extern用途</h3>
+
+<ol>
+<li>
+<code>extern</code> + 变量/函数声明
+
+<ul>
+<li>告诉编译器该变量/函数在后面/其它cpp定义</li>
+<li>
+<code>#include</code>也可达到同样目的，但<code>extern</code>可加速编译</li>
+</ul>
+</li>
+<li>
+<code>extern "C"</code> + 函数
+
+<ul>
+<li>告诉链接器用C函数规范来链接，以便在C++中调用C库函数</li>
+<li>因C++支持函数重载，函数被C++编译后在符号库中的名字与C不同</li>
+</ul>
+</li>
+</ol>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/ufoym">ufoym</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
