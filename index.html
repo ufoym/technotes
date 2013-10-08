@@ -81,10 +81,87 @@
 
 <ul>
 <li>相当于类范围内的全局函数</li>
-<li>只能访问类的静态成员</li>
+<li>木有this指针，只能访问类的静态成员</li>
 <li>实现不需要<code>static</code>修饰</li>
 </ul>
 </li>
+</ol><h3>
+<a name="const%E7%94%A8%E9%80%94" class="anchor" href="#const%E7%94%A8%E9%80%94"><span class="octicon octicon-link"></span></a><code>const</code>用途</h3>
+
+<ol>
+<li>声明常量<br>
+</li>
+<li>声明函数形参</li>
+<li>声明函数返回值
+
+<ul>
+<li>返回指针时，可防止返回的指针内容被修改</li>
+<li>按值返回时则没必要加<code>const</code>，例如不要写成<code>const int foo()</code>
+</li>
+</ul>
+</li>
+<li>修饰类成员函数
+
+<ul>
+<li>防止成员函数对成员变量进行修改</li>
+<li>只能调用类的其它const成员函数</li>
+<li>如果要在const成员函数修改某个成员变量，那么可以给这个变量的声明加上<code>mutable</code>
+</li>
+</ul>
+</li>
+</ol><h3>
+<a name="sizeof" class="anchor" href="#sizeof"><span class="octicon octicon-link"></span></a><code>sizeof</code>
+</h3>
+
+<ul>
+<li>作用：返回一个对象或者类型所占的内存（不计算类/结构体的static成员）</li>
+<li>如果类中有虚函数，那么最终结果要多加4Byte（多出一个指向虚函数表的指针）</li>
+<li>对空类使用sizeof会返回1（占用内存为0，无法实例化，所以编译器为了使空类也能实例化，就给其分配了1Byte）</li>
+<li>
+<p>例</p>
+
+<pre><code>static int a;         //sizeof(a) = 4
+
+class Zero {
+   int a;
+   static int b;
+   virtual void fun() {}
+};                    //sizeof(Zero) = 8
+
+class Lin {
+   virtual void fun() {}
+};                    //sizeof(Lin) = 4
+
+class Child: public Zero {
+   int a;
+   virtual void fun() {}
+};                    //sizeof(Child) = 12
+</code></pre>
+</li>
+</ul><h3>
+<a name="%E5%AE%8F" class="anchor" href="#%E5%AE%8F"><span class="octicon octicon-link"></span></a>宏</h3>
+
+<ul>
+<li>别忘了括号</li>
+<li>返回较小者：<code>#define MIN(a, b) ( (a) &lt; (b) ? (a) : (b) )</code>或<code>#define MIN(a, b) ( fabs((a)-(b))==((a)-(b)) ? (b) : (a) )</code>
+</li>
+</ul><h3>
+<a name="%E5%85%B6%E5%AE%83" class="anchor" href="#%E5%85%B6%E5%AE%83"><span class="octicon octicon-link"></span></a>其它</h3>
+
+<ol>
+<li>
+<code>inline</code>必须与函数定义放在一起才能使函数成为内联，仅将<code>inline</code>放在函数声明前面不起任何作用</li>
+<li>
+<p>在声明赋值语句中，变量先声明，然后赋值</p>
+
+<pre><code>int i = 1;
+int main() {
+    int i = i;     //这里声明的i 覆盖了全局变量的i，之后的赋值就是局部变量的i 给自己赋值，因而其值是未定义的
+    return 0;
+}
+</code></pre>
+</li>
+<li><p>x86是小端，低地址存放低字节（例如，0x1234在内存中可能这么存：地址0x4000存0x34，地址0x4001存0x12）</p></li>
 </ol>
       </section>
       <footer>
