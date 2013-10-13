@@ -58,6 +58,15 @@
   };                    //sizeof(Child) = 12
   ```
 
+## C++风格类型转换
+* const_cast<type>(varible): 去掉变量的const或volatile属性
+* static_cast<type>(varible): 类似C的强制转换，但功能上有所限制(如：不能去掉const属性)    
+  * 常用于基本类型转换，void指针与目标指针转换
+* dynamic_cast<type>(varible): 有条件转换，运行时进行类型安全检查(如果失败则返回NULL)    
+  * 用于基类与子类之间的类型转换(必须要有虚函数)
+* reinterpret_cast<type>(varible): 仅仅重新解释二进制内容 
+  * 常用于不同类型的指针转换
+
 ## macro
 * 别忘了括号
 * 返回较小者：```#define MIN(a, b) ( (a) < (b) ? (a) : (b) )```或```#define MIN(a, b) ( fabs((a)-(b))==((a)-(b)) ? (b) : (a) )```
@@ -69,7 +78,8 @@
    ```
    int i = 1;
    int main() {
-        int i = i;     //这里声明的i 覆盖了全局变量的i，之后的赋值就是局部变量的i 给自己赋值，因而其值是未定义的
+        int i = i;     //这里声明的i 覆盖了全局变量的i，
+                       //之后的赋值就是局部变量的i 给自己赋值，因而其值是未定义的
         return 0;
    }
    ```
