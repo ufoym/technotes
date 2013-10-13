@@ -59,13 +59,34 @@
   ```
 
 ## C++风格类型转换
-* const_cast<type>(varible): 去掉变量的const或volatile属性
-* static_cast<type>(varible): 类似C的强制转换，但功能上有所限制(如：不能去掉const属性)    
+* const_cast<type>(varible)
+  * 去掉变量的const或volatile属性
+* static_cast<type>(varible)
+  * 类似C的强制转换，但功能上有所限制(如：不能去掉const属性)    
   * 常用于基本类型转换，void指针与目标指针转换
-* dynamic_cast<type>(varible): 有条件转换，运行时进行类型安全检查(如果失败则返回NULL)    
+* dynamic_cast<type>(varible)
+  * 有条件转换，运行时进行类型安全检查(如果失败则返回NULL)    
   * 用于基类与子类之间的类型转换(必须要有虚函数)
-* reinterpret_cast<type>(varible): 仅仅重新解释二进制内容 
+* reinterpret_cast<type>(varible)
+  * 仅仅重新解释二进制内容 
   * 常用于不同类型的指针转换
+  
+```
+class Base {
+public:
+     virtual void fun() {}
+};
+class Zero: public Base {
+public:
+     virtual void fun() {}
+};
+int main() {
+     Base *pb = new Base;
+     (dynamic_cast<Zero*>(pb)) -> fun();     //由于实际指向的是基类，所以此转换失败，返回NULL，导致运行时错误
+     delete pb;
+     return 0;
+}
+```
 
 ## macro
 * 别忘了括号
